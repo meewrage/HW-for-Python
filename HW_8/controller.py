@@ -8,9 +8,9 @@ def menu():
         if answer == 1:
             data = model.get_data()    
         elif answer == 2:
-            firstname, lastname, phoneNum = input("Введите данные для добавления.\n Имя: "), input ("Фамилия: "), input("Телефон: ")
-            result = model.add_contact(firstname, lastname, phoneNum)
-            view.result(result)
+            firstname, lastname, phoneNum = input("Введите данные для добавления.\n Имя: ").capitalize(), input ("Фамилия: ").capitalize(), input("Телефон: ").capitalize()
+            model.add_contact(firstname, lastname, phoneNum)
+            view.result(firstname, lastname, phoneNum)
         elif answer == 3:
             view.find()
             command = input("Введите команду: ")

@@ -16,31 +16,28 @@ def get_data():
 
 def add_contact(firstname, lastname, phoneNum):
     with open('data_file.txt', 'a', encoding='utf-8') as data_file:
-        data_file.write("[" + firstname + " " + lastname + ", " + phoneNum + "]\n")
-
-    return firstname, lastname, phoneNum
+        data_file.write(firstname + " " + lastname + " " + phoneNum)
 
 def find_contact(command):
-    myfile = open('data_file.txt', 'r', encoding='utf-8')
-    open(filename, "r+")
-    if command == "1":
-            find_name = input('Введите имя: ')
-            for values in myfile:
-                 if myfile[values] == find_name:
-                      
-                    print(myfile[values])
-    elif command == "2":
-          find_name = input('Введите номер телефона, начиная с 8: ')
-          for values in myfile:
-                 if myfile[values] == find_name:
-                      
-                    print(myfile[values])
-    myfile.close
     
+    with open("data_file.txt", "r", encoding="utf-8") as file:
+       
+        if command == "1":
+            find_name = input('Введите имя: ')
+            for line in file:
+                if line.startswith(find_name):
+                    print(line)
+        # elif command == "2":
+        #     find_name = input('Введите номер телефона, начиная с 8: ')
+        #     for i in line:
+        #         if find_name == i:
+        #             print(i)
+    
+
 def delete_person(name):
     # """Удаляет данные"""
     persons = get_data()
-    with open("data.txt", "a", encoding="utf8" ) as file:
+    with open("data_file.txt", "a", encoding="utf8" ) as file:
         for person in persons:
             if name != person:
                 file.write(person)
@@ -48,7 +45,7 @@ def delete_person(name):
 def change_person(new_name, old_name):
     # """Изменяет данные"""
     persons = get_data()
-    with open("data.txt", "a", encoding="utf8" ) as file:
+    with open("data.txt", "w+", encoding="utf8" ) as file:
         for person in persons:
             if  old_name != person:
                 file.write(person)
