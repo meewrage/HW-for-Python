@@ -19,6 +19,10 @@ def no_result(filecontents):
 def find():
     print("Искать по: \n1. ФИО \n2. Номеру телефона ")
 
+def show_contacts(date: list):
+    print(*date, sep='\n')
+
+
 # def show_contacts(myfile[values]):
 #     print(myfile[values])
     

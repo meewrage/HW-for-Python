@@ -12,10 +12,9 @@ def menu():
             model.add_contact(firstname, lastname, phoneNum)
             view.result(firstname, lastname, phoneNum)
         elif answer == 3:
-            view.find()
-            command = input("Введите команду: ")
-            model.find_contact(command)
-        #     view.show_contacts(result)
+            info = input("Введите данные контакта для поиска: ")
+            result = model.search(info)
+            view.show_contacts(result)
         elif answer == 4:
             old_name = input("Введите старое имя для поиска контакта: ")
             new_name = input("Введите новое имя: ")

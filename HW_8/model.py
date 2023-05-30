@@ -18,49 +18,8 @@ def add_contact(firstname, lastname, phoneNum):
     with open('data_file.txt', 'a', encoding='utf-8') as data_file:
         data_file.write(firstname + " " + lastname + " " + phoneNum)
 
-def find_contact(command):
-    
-    with open("data_file.txt", "r", encoding="utf-8") as file:
-       
-        if command == "1":
-            find_name = input('Введите имя: ')
-            for line in file:
-                if line.startswith(find_name):
-                    print(line)
-        # elif command == "2":
-        #     find_name = input('Введите номер телефона, начиная с 8: ')
-        #     for i in line:
-        #         if find_name == i:
-        #             print(i)
+def search(information_from_user: str):
+    with open('data_file.txt', 'r', encoding='utf-8') as file:
+        return[line.strip() for line in file if information_from_user in line]
     
 
-def delete_person(name):
-    # """Удаляет данные"""
-    persons = get_data()
-    with open("data_file.txt", "a", encoding="utf8" ) as file:
-        for person in persons:
-            if name != person:
-                file.write(person)
-
-def change_person(new_name, old_name):
-    # """Изменяет данные"""
-    persons = get_data()
-    with open("data.txt", "w+", encoding="utf8" ) as file:
-        for person in persons:
-            if  old_name != person:
-                file.write(person)
-            else:
-                file.write(new_name + "\n")
-
-
-# def records(file_name: str):
-#     with open(file_name, 'r+', encoding='utf-8') as data:
-#         record_id = 0
-#         for line in data:
-#             if line != '':
-#                 record_id = line.split(';', 1)[0]
-#         print('Введите фамилию, имя, отчество, номер телефона через пробел')
-#         line = f'{int(record_id) + 1};' + ';'.join(input().split()[:4]) + ';\n'
-#         confirm = proof('добавление записи')
-#         if confirm == 'y':
-#             data.write(line)
